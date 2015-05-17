@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "mpi.h"
-#define MAX_RAND 5
+#define MAX_RAND 10
 int main( argc, argv )
 int argc;
 char **argv;
@@ -35,7 +35,7 @@ char **argv;
  */
 int master_node(old_comm)
 {
-	int i, size, total_events=0, event, msg=0;
+	int i, size, total_events=0, matches, msg=0;
 	MPI_Status status;
 	MPI_Comm_size(old_comm, &size);
 	FILE *fp;
@@ -44,12 +44,12 @@ int master_node(old_comm)
 	for(i=0; i<size-1; i++){
 		/* Receive updates from 3/4 nodes in each adjacency */
 		if(i%4!=0){
-			MPI_Recv(&event, 1, MPI_INT, i+1, 0, old_comm, &status);
+			MPI_Recv(&matches, 1, MPI_INT, i+1, 0, old_comm, &status);
 			msg++;
-			fprintf(fp, "%d:\t Sent %d to base station\n", i,event);
-			/* Detect events */
-			if(event==4){
-				printf("Event detected\n");
+			fprintf(fp, "%d:\t Sent %d matches to base station\n", i,matches);
+			/* Detect event */
+			if(matches==4){
+				printf("Event detected from node %d\n", i);
 				total_events++;
 			}
 			
@@ -61,7 +61,7 @@ int master_node(old_comm)
 
 int slave_node(old_comm, comm)
 {
-	int rank, size, s, r, event=0;
+	int rank, size, s, r, matches=0;
 	MPI_Status status;
 	MPI_Comm_rank(comm, &rank);
 	MPI_Comm_size(comm, &size);
@@ -73,39 +73,42 @@ int slave_node(old_comm, comm)
 	/* Separate groups of four */
 	switch(rank % 4){
 		case 0:
-			/* Send random number to the next adjacent node*/
+			/* Send random number to the next adjacent node */
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
+			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank+1);
 			MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
-			event++;
 			if(s == r) {
-				event++;
+				matches++;
 			}
-			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
-			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
+			MPI_Send(&matches, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d matches to node %d\n", rank, matches, rank+1);
 			break;
 		case 1:
 		case 2:
+			/* Receive number from the previous node */
 			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
+			/* Send random number to the next adjacent node*/
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
-			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
+			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank+1);
+			MPI_Recv(&matches, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
-				event++;
+				matches++;
 			}
-			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
-			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
-			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
+			MPI_Send(&matches, 1, MPI_INT, 0, 0, old_comm);
+			MPI_Send(&matches, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d matches to node %d\n", rank, matches, rank+1);
 			break;
 		case 3:
+			/* Receive number from the previous node */
 			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
+			/* Send random number to the next adjacent node */
 			MPI_Send(&s, 1, MPI_INT, rank-3, 0, comm);
-			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank-3);
-			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
+			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank-3);
+			MPI_Recv(&matches, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
-				event++;
+				matches++;
 			}
-			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
+			MPI_Send(&matches, 1, MPI_INT, 0, 0, old_comm);
 			break;
 	}
 	return 0;
