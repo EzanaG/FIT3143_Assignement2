@@ -20,8 +20,8 @@ char **argv;
 	MPI_Comm_split(MPI_COMM_WORLD, rank==0, 0, &new_comm);
 
 	if(rank==0){
-		fprintf(fp, "----------\n%d total events\n----------\n", master_node(MPI_COMM_WORLD));
-		fprintf(fp,"----------\nAvg. Simulation Time:\t%f\n----------\n", MPI_Wtime()-start);
+		fprintf(fp, "\nTOTAL EVENTS:\t%d\n\n", master_node(MPI_COMM_WORLD));
+		fprintf(fp,"\nSIMULATION TIME:\t%f\n\n", MPI_Wtime()-start);
 	}else
 		slave_node(MPI_COMM_WORLD, new_comm);
 	MPI_Finalize();
@@ -35,7 +35,7 @@ char **argv;
  */
 int master_node(old_comm)
 {
-	int i, size, num_events=0, event, msg=0;
+	int i, size, total_events=0, event, msg=0;
 	MPI_Status status;
 	MPI_Comm_size(old_comm, &size);
 	FILE *fp;
@@ -50,13 +50,13 @@ int master_node(old_comm)
 			/* Detect events */
 			if(event==4){
 				printf("Event detected\n");
-				num_events++;
+				total_events++;
 			}
 			
 		}
 	}
 	fprintf(fp, "%d messages sent to the base station\n", msg);
-	return num_events;
+	return total_events;
 }
 
 int slave_node(old_comm, comm)
@@ -108,10 +108,5 @@ int slave_node(old_comm, comm)
 			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
 			break;
 	}
-	return 0;
-}
-
-int send_msgs()
-{
 	return 0;
 }
