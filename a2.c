@@ -29,7 +29,7 @@ char **argv;
 }
 /*
  * The master_node() function implements the the WSN base station
- * The WSN bas station receives updates from all the other nodes, exluding one node
+ * The WSN base station receives updates from all the other nodes, exluding one node
  * in each adjacency group, and detects any events that have occured
  * return	number of events detected
  */
@@ -42,11 +42,12 @@ int master_node(old_comm)
 	fp = fopen("log.txt", "a");
 	
 	for(i=0; i<size-1; i++){
-		/* Receive updates from each node in each group */
+		/* Receive updates from 3/4 nodes in each adjacency */
 		if(i%4!=0){
 			MPI_Recv(&event, 1, MPI_INT, i+1, 0, old_comm, &status);
 			msg++;
 			fprintf(fp, "%d:\t Sent %d to base station\n", i,event);
+			/* Detect events */
 			if(event==4){
 				printf("Event detected\n");
 				num_events++;
@@ -66,56 +67,51 @@ int slave_node(old_comm, comm)
 	MPI_Comm_size(comm, &size);
 	FILE *fp;
 	fp = fopen("log.txt", "a");
-	if(rank % 4 == 0){
-		srandom(time(NULL)+rank);
-		s = (random()+rank)%MAX_RAND;
-		MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
-		MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
-		event++;
-		if(s == r) {
+	/* Generate random number */
+	srandom(time(NULL)+rank);
+	s = (random()+rank)%MAX_RAND;
+	/* Separate groups of four */
+	switch(rank % 4){
+		case 0:
+			/* Send random number to the next adjacent node*/
+			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
+			MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
 			event++;
-		}
-		MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
-	
-	} if(rank % 4 == 1){
-		s = (random()+rank)%MAX_RAND;
-		MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
-		MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
-		MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
-		event++;
-		if(s == r) {
-			event++;
-		}
-		MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
-		MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
-	
-	} if(rank % 4 == 2){
-		s = (random()+rank)%MAX_RAND;
-		MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
-		MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
-		MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
-		if(s == r) {
-			event++;
-		}
-		MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
-		MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
-		fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
-	
-	} if(rank % 4 == 3){
-		s = (random()+rank)%MAX_RAND;
-		MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
-		MPI_Send(&s, 1, MPI_INT, rank-3, 0, comm);
-		fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank-3);
-		MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
-		if(s == r) {
-			event++;
-		}
-		MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
+			if(s == r) {
+				event++;
+			}
+			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
+			break;
+		case 1:
+		case 2:
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
+			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
+			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
+			if(s == r) {
+				event++;
+			}
+			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
+			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
+			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
+			break;
+		case 3:
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
+			MPI_Send(&s, 1, MPI_INT, rank-3, 0, comm);
+			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank-3);
+			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
+			if(s == r) {
+				event++;
+			}
+			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
+			break;
 	}
+	return 0;
+}
+
+int send_msgs()
+{
 	return 0;
 }
