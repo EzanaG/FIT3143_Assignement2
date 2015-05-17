@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "mpi.h"
-#define MAX_RAND 5
+#define MAX_RAND 2
 int main( argc, argv )
 int argc;
 char **argv;
@@ -29,8 +29,8 @@ char **argv;
 }
 /*
  * The master_node() function implements the the WSN base station
- * The WSN base station receives updates from all the other nodes, exluding one node
- * in each adjacency group, and detects any events that have occured
+ * The WSN base station receives updates one node in each adjacency 
+ * group, and detects any events that have occured
  * return	number of events detected
  */
 int master_node(old_comm)
@@ -42,8 +42,8 @@ int master_node(old_comm)
 	fp = fopen("log.txt", "a");
 	
 	for(i=0; i<size-1; i++){
-		/* Receive updates from 3/4 nodes in each adjacency */
-		if(i%4!=0){
+		/* Receive updates from one node in each adjacency */
+		if(i%4==0){
 			MPI_Recv(&event, 1, MPI_INT, i+1, 0, old_comm, &status);
 			msg++;
 			fprintf(fp, "%d:\t Sent %d to base station\n", i,event);
@@ -74,38 +74,37 @@ int slave_node(old_comm, comm)
 	switch(rank % 4){
 		case 0:
 			/* Send random number to the next adjacent node*/
+			MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
 			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
-			MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
 			event++;
 			if(s == r) {
 				event++;
 			}
 			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
 			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
+			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
 			break;
 		case 1:
 		case 2:
-			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
 			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
 				event++;
 			}
-			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
 			MPI_Send(&event, 1, MPI_INT, rank+1, 0, comm);
 			fprintf(fp, "%d:\t Sent %d matches to process %d\n", rank, event, rank+1);
 			break;
 		case 3:
-			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			MPI_Send(&s, 1, MPI_INT, rank-3, 0, comm);
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank-3);
 			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
 				event++;
 			}
-			MPI_Send(&event, 1, MPI_INT, 0, 0, old_comm);
 			break;
 	}
 	return 0;
