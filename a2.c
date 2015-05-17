@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "mpi.h"
-#define MAX_RAND 2
+#define MAX_RAND 1
 int main( argc, argv )
 int argc;
 char **argv;
@@ -52,7 +52,6 @@ int master_node(old_comm)
 				printf("Event detected\n");
 				total_events++;
 			}
-			
 		}
 	}
 	fprintf(fp, "%d messages sent to the base station\n", msg);
@@ -88,8 +87,8 @@ int slave_node(old_comm, comm)
 		case 1:
 		case 2:
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
-			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank+1);
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
 				event++;
@@ -99,8 +98,8 @@ int slave_node(old_comm, comm)
 			break;
 		case 3:
 			MPI_Send(&s, 1, MPI_INT, rank-3, 0, comm);
-			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			fprintf(fp, "%d:\t Sent %d to process %d\n", rank, s, rank-3);
+			MPI_Recv(&r, 1, MPI_INT, rank-1, 0, comm, &status);
 			MPI_Recv(&event, 2, MPI_INT, rank-1, 0, comm, &status);
 			if(s == r) {
 				event++;
