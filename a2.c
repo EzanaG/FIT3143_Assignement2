@@ -28,6 +28,7 @@ char **argv;
 	MPI_Finalize();
 	return 0;
 }
+
 /* The base_station() function implements the the WSN base station
  * The WSN base station receives updates from all the other nodes, exluding one node
  * in each adjacency group, and detects any events that have occured
@@ -77,16 +78,16 @@ int slave_node(old_comm, comm)
 	/* Generate random number */
 	srandom(time(NULL)+rank);
 	s = (random()+rank)%MAX_RAND;
-	/* Separate into groups of four adjecent nodes */
+	
+	/* Separate into groups of four adjacent nodes */
 	switch(rank % 4){
 		case 0:
 			/* Send random number to the next adjacent node */
 			MPI_Send(&s, 1, MPI_INT, rank+1, 0, comm);
 			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank+1);
 			MPI_Recv(&r, 1, MPI_INT, rank+3, 0, comm, &status);
-			if(s == r) {
+			if(s == r)
 				num_matches++;
-			}
 			/* Send the number of matches to the next node */
 			MPI_Send(&num_matches, 1, MPI_INT, rank+1, 0, comm);
 			fprintf(fp, "%d:\t Sent %d matches to node %d\n", rank, num_matches, rank+1);
@@ -100,9 +101,8 @@ int slave_node(old_comm, comm)
 			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank+1);
 			/* Receive the number of matches from the previous node */
 			MPI_Recv(&num_matches, 2, MPI_INT, rank-1, 0, comm, &status);
-			if(s == r) {
+			if(s == r)
 				num_matches++;
-			}
 			/* Send the number of matches to the base station */
 			MPI_Send(&num_matches, 1, MPI_INT, 0, 0, old_comm);
 			/* Send the number of matches to the next node */
@@ -117,9 +117,8 @@ int slave_node(old_comm, comm)
 			fprintf(fp, "%d:\t Sent '%d' to node %d\n", rank, s, rank-3);
 			/* Receive the number of matches from the previous node */
 			MPI_Recv(&num_matches, 2, MPI_INT, rank-1, 0, comm, &status);
-			if(s == r) {
+			if(s == r)
 				num_matches++;
-			}
 			/* Send the number of matches to the base station */
 			MPI_Send(&num_matches, 1, MPI_INT, 0, 0, old_comm);
 			break;
