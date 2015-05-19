@@ -1,0 +1,334 @@
+9:	 Sent '7' to node 10
+9:	 Sent 0 num_matches to node 10
+40:	 Sent '7' to node 41
+40:	 Sent 0 matches to node 41
+60:	 Sent '9' to node 61
+60:	 Sent 0 matches to node 61
+1:	 Sent '6' to node 2
+1:	 Sent 0 num_matches to node 2
+6:	 Sent '1' to node 7
+6:	 Sent 0 num_matches to node 7
+5:	 Sent '8' to node 6
+5:	 Sent 0 num_matches to node 6
+19:	 Sent '7' to node 16
+12:	 Sent '2' to node 13
+12:	 Sent 0 matches to node 13
+42:	 Sent '9' to node 43
+42:	 Sent 0 num_matches to node 43
+43:	 Sent '0' to node 40
+28:	 Sent '4' to node 29
+28:	 Sent 1 matches to node 29
+14:	 Sent '0' to node 15
+14:	 Sent 0 num_matches to node 15
+48:	 Sent '0' to node 49
+48:	 Sent 0 matches to node 49
+17:	 Sent '8' to node 18
+17:	 Sent 1 num_matches to node 18
+34:	 Sent '4' to node 35
+34:	 Sent 0 num_matches to node 35
+44:	 Sent '7' to node 45
+44:	 Sent 1 matches to node 45
+39:	 Sent '2' to node 36
+33:	 Sent '0' to node 34
+33:	 Sent 0 num_matches to node 34
+32:	 Sent '3' to node 33
+32:	 Sent 0 matches to node 33
+29:	 Sent '8' to node 30
+29:	 Sent 1 num_matches to node 30
+23:	 Sent '2' to node 20
+3:	 Sent '6' to node 0
+59:	 Sent '6' to node 56
+50:	 Sent '2' to node 51
+50:	 Sent 0 num_matches to node 51
+27:	 Sent '6' to node 24
+20:	 Sent '9' to node 21
+20:	 Sent 0 matches to node 21
+54:	 Sent '9' to node 55
+54:	 Sent 1 num_matches to node 55
+63:	 Sent '1' to node 60
+62:	 Sent '8' to node 63
+62:	 Sent 0 num_matches to node 63
+2:	 Sent '5' to node 3
+2:	 Sent 0 num_matches to node 3
+56:	 Sent '6' to node 57
+56:	 Sent 1 matches to node 57
+16:	 Sent '7' to node 17
+16:	 Sent 1 matches to node 17
+58:	 Sent '2' to node 59
+58:	 Sent 2 num_matches to node 59
+36:	 Sent '1' to node 37
+36:	 Sent 0 matches to node 37
+49:	 Sent '6' to node 50
+49:	 Sent 0 num_matches to node 50
+30:	 Sent '3' to node 31
+30:	 Sent 1 num_matches to node 31
+7:	 Sent '2' to node 4
+53:	 Sent '9' to node 54
+53:	 Sent 0 num_matches to node 54
+24:	 Sent '5' to node 25
+24:	 Sent 0 matches to node 25
+35:	 Sent '5' to node 32
+57:	 Sent '6' to node 58
+57:	 Sent 2 num_matches to node 58
+10:	 Sent '9' to node 11
+10:	 Sent 0 num_matches to node 11
+52:	 Sent '2' to node 53
+52:	 Sent 0 matches to node 53
+22:	 Sent '1' to node 23
+22:	 Sent 0 num_matches to node 23
+51:	 Sent '7' to node 48
+21:	 Sent '3' to node 22
+21:	 Sent 0 num_matches to node 22
+26:	 Sent '9' to node 27
+26:	 Sent 0 num_matches to node 27
+0:	 Sent '0' to node 1
+0:	 Sent 0 matches to node 1
+37:	 Sent '3' to node 38
+37:	 Sent 0 num_matches to node 38
+4:	 Sent '6' to node 5
+4:	 Sent 0 matches to node 5
+11:	 Sent '2' to node 8
+41:	 Sent '8' to node 42
+41:	 Sent 0 num_matches to node 42
+61:	 Sent '6' to node 62
+61:	 Sent 0 num_matches to node 62
+15:	 Sent '1' to node 12
+31:	 Sent '4' to node 28
+46:	 Sent '6' to node 47
+46:	 Sent 1 num_matches to node 47
+25:	 Sent '4' to node 26
+25:	 Sent 0 num_matches to node 26
+13:	 Sent '7' to node 14
+13:	 Sent 0 num_matches to node 14
+38:	 Sent '1' to node 39
+38:	 Sent 0 num_matches to node 39
+55:	 Sent '1' to node 52
+45:	 Sent '4' to node 46
+45:	 Sent 1 num_matches to node 46
+18:	 Sent '6' to node 19
+18:	 Sent 1 num_matches to node 19
+8:	 Sent '6' to node 9
+8:	 Sent 0 matches to node 9
+47:	 Sent '7' to node 44
+1:	 Sent 0 num_matches to base station
+2:	 Sent 0 num_matches to base station
+3:	 Sent 0 num_matches to base station
+5:	 Sent 0 num_matches to base station
+6:	 Sent 0 num_matches to base station
+7:	 Sent 0 num_matches to base station
+9:	 Sent 0 num_matches to base station
+10:	 Sent 0 num_matches to base station
+11:	 Sent 0 num_matches to base station
+13:	 Sent 0 num_matches to base station
+14:	 Sent 0 num_matches to base station
+15:	 Sent 0 num_matches to base station
+17:	 Sent 1 num_matches to base station
+18:	 Sent 1 num_matches to base station
+19:	 Sent 1 num_matches to base station
+21:	 Sent 0 num_matches to base station
+22:	 Sent 0 num_matches to base station
+23:	 Sent 0 num_matches to base station
+25:	 Sent 0 num_matches to base station
+26:	 Sent 0 num_matches to base station
+27:	 Sent 0 num_matches to base station
+29:	 Sent 1 num_matches to base station
+30:	 Sent 1 num_matches to base station
+31:	 Sent 1 num_matches to base station
+33:	 Sent 0 num_matches to base station
+34:	 Sent 0 num_matches to base station
+35:	 Sent 0 num_matches to base station
+37:	 Sent 0 num_matches to base station
+38:	 Sent 0 num_matches to base station
+39:	 Sent 0 num_matches to base station
+41:	 Sent 0 num_matches to base station
+42:	 Sent 0 num_matches to base station
+43:	 Sent 0 num_matches to base station
+45:	 Sent 1 num_matches to base station
+46:	 Sent 1 num_matches to base station
+47:	 Sent 1 num_matches to base station
+49:	 Sent 0 num_matches to base station
+50:	 Sent 0 num_matches to base station
+51:	 Sent 0 num_matches to base station
+53:	 Sent 0 num_matches to base station
+54:	 Sent 1 num_matches to base station
+55:	 Sent 1 num_matches to base station
+57:	 Sent 2 num_matches to base station
+58:	 Sent 2 num_matches to base station
+59:	 Sent 2 num_matches to base station
+61:	 Sent 0 num_matches to base station
+62:	 Sent 0 num_matches to base station
+63:	 Sent 0 num_matches to base station
+48 messages sent to the base station
+
+TOTAL EVENTS:	0
+
+
+SIMULATION TIME:	4.325892
+
+62:	 Sent '5' to node 63
+62:	 Sent 0 num_matches to node 63
+61:	 Sent '6' to node 62
+61:	 Sent 0 num_matches to node 62
+63:	 Sent '6' to node 60
+29:	 Sent '1' to node 30
+29:	 Sent 0 num_matches to node 30
+54:	 Sent '7' to node 55
+54:	 Sent 0 num_matches to node 55
+11:	 Sent '8' to node 8
+32:	 Sent '9' to node 33
+32:	 Sent 0 matches to node 33
+44:	 Sent '1' to node 45
+44:	 Sent 1 matches to node 45
+41:	 Sent '7' to node 42
+41:	 Sent 0 num_matches to node 42
+15:	 Sent '8' to node 12
+22:	 Sent '1' to node 23
+22:	 Sent 1 num_matches to node 23
+4:	 Sent '0' to node 5
+4:	 Sent 0 matches to node 5
+43:	 Sent '3' to node 40
+56:	 Sent '9' to node 57
+56:	 Sent 0 matches to node 57
+36:	 Sent '0' to node 37
+36:	 Sent 0 matches to node 37
+10:	 Sent '0' to node 11
+10:	 Sent 0 num_matches to node 11
+53:	 Sent '8' to node 54
+53:	 Sent 0 num_matches to node 54
+47:	 Sent '1' to node 44
+23:	 Sent '9' to node 20
+2:	 Sent '8' to node 3
+2:	 Sent 0 num_matches to node 3
+59:	 Sent '6' to node 56
+21:	 Sent '0' to node 22
+21:	 Sent 1 num_matches to node 22
+49:	 Sent '6' to node 50
+49:	 Sent 0 num_matches to node 50
+38:	 Sent '8' to node 39
+38:	 Sent 0 num_matches to node 39
+58:	 Sent '3' to node 59
+58:	 Sent 0 num_matches to node 59
+1:	 Sent '7' to node 2
+1:	 Sent 0 num_matches to node 2
+57:	 Sent '1' to node 58
+57:	 Sent 0 num_matches to node 58
+20:	 Sent '9' to node 21
+20:	 Sent 1 matches to node 21
+48:	 Sent '2' to node 49
+48:	 Sent 0 matches to node 49
+33:	 Sent '9' to node 34
+33:	 Sent 1 num_matches to node 34
+19:	 Sent '7' to node 16
+30:	 Sent '6' to node 31
+30:	 Sent 0 num_matches to node 31
+60:	 Sent '2' to node 61
+60:	 Sent 0 matches to node 61
+17:	 Sent '5' to node 18
+17:	 Sent 0 num_matches to node 18
+39:	 Sent '2' to node 36
+50:	 Sent '6' to node 51
+50:	 Sent 1 num_matches to node 51
+55:	 Sent '3' to node 52
+18:	 Sent '5' to node 19
+18:	 Sent 1 num_matches to node 19
+12:	 Sent '2' to node 13
+12:	 Sent 0 matches to node 13
+37:	 Sent '2' to node 38
+37:	 Sent 0 num_matches to node 38
+9:	 Sent '2' to node 10
+9:	 Sent 0 num_matches to node 10
+6:	 Sent '5' to node 7
+6:	 Sent 0 num_matches to node 7
+0:	 Sent '3' to node 1
+0:	 Sent 0 matches to node 1
+16:	 Sent '4' to node 17
+16:	 Sent 0 matches to node 17
+7:	 Sent '9' to node 4
+40:	 Sent '0' to node 41
+40:	 Sent 0 matches to node 41
+42:	 Sent '5' to node 43
+42:	 Sent 0 num_matches to node 43
+45:	 Sent '7' to node 46
+45:	 Sent 1 num_matches to node 46
+27:	 Sent '3' to node 24
+34:	 Sent '3' to node 35
+34:	 Sent 1 num_matches to node 35
+25:	 Sent '7' to node 26
+25:	 Sent 1 num_matches to node 26
+51:	 Sent '1' to node 48
+3:	 Sent '5' to node 0
+26:	 Sent '7' to node 27
+26:	 Sent 2 num_matches to node 27
+46:	 Sent '0' to node 47
+46:	 Sent 1 num_matches to node 47
+28:	 Sent '5' to node 29
+28:	 Sent 0 matches to node 29
+52:	 Sent '9' to node 53
+52:	 Sent 0 matches to node 53
+35:	 Sent '7' to node 32
+13:	 Sent '3' to node 14
+13:	 Sent 0 num_matches to node 14
+14:	 Sent '1' to node 15
+14:	 Sent 0 num_matches to node 15
+8:	 Sent '7' to node 9
+8:	 Sent 0 matches to node 9
+31:	 Sent '3' to node 28
+5:	 Sent '9' to node 6
+5:	 Sent 0 num_matches to node 6
+1:	 Sent 0 num_matches to base station
+2:	 Sent 0 num_matches to base station
+3:	 Sent 0 num_matches to base station
+5:	 Sent 0 num_matches to base station
+6:	 Sent 0 num_matches to base station
+7:	 Sent 0 num_matches to base station
+9:	 Sent 0 num_matches to base station
+10:	 Sent 0 num_matches to base station
+11:	 Sent 0 num_matches to base station
+13:	 Sent 0 num_matches to base station
+14:	 Sent 0 num_matches to base station
+15:	 Sent 0 num_matches to base station
+17:	 Sent 0 num_matches to base station
+18:	 Sent 1 num_matches to base station
+19:	 Sent 1 num_matches to base station
+21:	 Sent 1 num_matches to base station
+22:	 Sent 1 num_matches to base station
+23:	 Sent 1 num_matches to base station
+25:	 Sent 1 num_matches to base station
+26:	 Sent 2 num_matches to base station
+27:	 Sent 2 num_matches to base station
+29:	 Sent 0 num_matches to base station
+30:	 Sent 0 num_matches to base station
+31:	 Sent 0 num_matches to base station
+33:	 Sent 1 num_matches to base station
+34:	 Sent 1 num_matches to base station
+35:	 Sent 1 num_matches to base station
+37:	 Sent 0 num_matches to base station
+38:	 Sent 0 num_matches to base station
+39:	 Sent 0 num_matches to base station
+41:	 Sent 0 num_matches to base station
+42:	 Sent 0 num_matches to base station
+43:	 Sent 0 num_matches to base station
+45:	 Sent 1 num_matches to base station
+46:	 Sent 1 num_matches to base station
+47:	 Sent 1 num_matches to base station
+49:	 Sent 0 num_matches to base station
+50:	 Sent 1 num_matches to base station
+51:	 Sent 1 num_matches to base station
+53:	 Sent 0 num_matches to base station
+54:	 Sent 0 num_matches to base station
+55:	 Sent 0 num_matches to base station
+57:	 Sent 0 num_matches to base station
+58:	 Sent 0 num_matches to base station
+59:	 Sent 0 num_matches to base station
+61:	 Sent 0 num_matches to base station
+62:	 Sent 0 num_matches to base station
+63:	 Sent 0 num_matches to base station
+48 messages sent to the base station
+
+TOTAL EVENTS:	0
+
+
+SIMULATION TIME:	3.620254
+
+24:	 Sent '3' to node 25
+24:	 Sent 1 matches to node 25
